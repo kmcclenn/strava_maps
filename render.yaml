@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: strava-activity-map
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: STRAVA_CLIENT_ID
+        sync: false        # you'll paste this in the Render dashboard
+      - key: STRAVA_CLIENT_SECRET
+        sync: false        # you'll paste this in the Render dashboard
+      - key: SECRET_KEY
+        generateValue: true   # Render generates this automatically
+      - key: APP_URL
+        sync: false        # you'll set this to your .onrender.com URL after first deploy
