@@ -139,7 +139,9 @@ def callback():
     error = request.args.get('error')
     code = request.args.get('code')
     if error or not code:
-        return redirect('/?error=access_denied')
+        return render_template('error.html',
+            title='Strava denied access',
+            detail=f'Strava returned: {error or "no code provided"}')
 
     client_id, client_secret = get_credentials()
     resp = requests.post(STRAVA_TOKEN_URL, data={
@@ -149,7 +151,9 @@ def callback():
         'grant_type': 'authorization_code',
     })
     if not resp.ok:
-        return redirect('/?error=token_exchange_failed')
+        return render_template('error.html',
+            title='Token exchange failed',
+            detail=f'Strava responded {resp.status_code}: {resp.text}')
 
     data = resp.json()
     session['access_token'] = data['access_token']

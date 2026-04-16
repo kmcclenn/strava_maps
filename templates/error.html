@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Error — Strava Map</title>
+  <style>
+    body { min-height:100vh; background:#1a1a2e; color:#e0e0e0; font-family:system-ui,sans-serif;
+           display:flex; align-items:center; justify-content:center; }
+    .box { background:#16213e; border:1px solid #2a3550; border-radius:12px;
+           padding:36px 44px; max-width:500px; text-align:center; }
+    h2 { color:#fc4c02; margin-bottom:12px; }
+    p  { color:#8892a4; font-size:14px; line-height:1.6; margin-bottom:8px; }
+    code { background:#0f3460; padding:8px 12px; border-radius:6px; display:block;
+           font-size:12px; color:#e0e0e0; margin:12px 0; text-align:left; word-break:break-all; }
+    a { color:#fc4c02; text-decoration:none; font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>{{ title }}</h2>
+    <p>Something went wrong during authentication.</p>
+    <code>{{ detail }}</code>
+    <p><a href="/">← Back to home</a></p>
+  </div>
+</body>
+</html>
